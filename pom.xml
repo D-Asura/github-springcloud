@@ -36,6 +36,13 @@
             <artifactId>mybatis</artifactId>
             <version>3.5.1</version>
         </dependency>
+
+        <!-- Oracle JDBC，官网jar包自己导入-->
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc8</artifactId>
+            <version>18.3</version>
+        </dependency>
     </dependencies>
 
     <build>
