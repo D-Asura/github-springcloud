@@ -14,5 +14,7 @@ spring:
     password: ${DB_PASSWORD:Aa_12345}
 
 # Mybatis配置
-mybatis:
+mybatis-plus:
   mapper-locations: classpath:/static/mybatis/*.xml
+  # 实体扫描，多个package用逗号或者分号分隔
+  type-aliases-package: com.dragon.githubspringcloud.entity

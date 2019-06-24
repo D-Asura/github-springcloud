@@ -45,6 +45,13 @@ public class CodeGenerator {
         gc.setAuthor("dragon");
         gc.setOpen(false);
         // gc.setSwagger2(true); 实体属性 Swagger2 注解
+
+        gc.setEntityName("%s");
+        gc.setMapperName("%sMapper");
+        gc.setServiceName("%sService");
+        gc.setServiceImplName("%sServiceImpl");
+        gc.setControllerName("%sController");
+
         mpg.setGlobalConfig(gc);
 
         // 数据源配置
@@ -63,9 +70,9 @@ public class CodeGenerator {
         pc.setController("controller");
         pc.setService("service");
         pc.setServiceImpl("service.impl");
-        pc.setMapper("dao");
-        pc.setEntity("model");
-        pc.setXml("xml");
+        pc.setMapper("mapper");
+        pc.setEntity("entity");
+        pc.setXml("../../resources/mybatis/static/xml");
         mpg.setPackageInfo(pc);
 
         // 自定义配置
@@ -110,9 +117,11 @@ public class CodeGenerator {
 
         // 配置自定义输出模板
         //指定自定义模板路径，注意不要带上.ftl/.vm, 会根据使用的模板引擎自动识别
-        // templateConfig.setEntity("templates/entity2.java");
-        // templateConfig.setService();
-        // templateConfig.setController();
+        templateConfig.setEntity("templates/entity.java");
+        templateConfig.setController("templates/controller.java");
+        templateConfig.setMapper("templates/mapper.java");
+        templateConfig.setService("templates/service.java");
+        templateConfig.setServiceImpl("templates/serviceImpl.java");
 
         templateConfig.setXml(null);
         mpg.setTemplate(templateConfig);
