@@ -9,7 +9,9 @@ spring:
   datasource:
     #    driver-class-name: oracle.jdbc.driver.OracleDriver
     #    url: ${DB_URL:jdbc:oracle:thin:@localhost:1521:xe}
-    url: ${DB_URL:jdbc:mysql://47.93.185.147:3306/dragon}
+
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DB_URL:jdbc:mysql://47.93.185.147:3306/dragon?useSSL=false&serverTimezone=UTC}
     username: ${DB_USERNAME:root}
     password: ${DB_PASSWORD:Aa_12345}
 
@@ -41,7 +43,9 @@ mybatis-plus:
 #    sql-injector: com.baomidou.mybatisplus.mapper.LogicSqlInjector
 #    #自定义填充策略接口实现
 #    meta-object-handler: com.baomidou.springboot.MyMetaObjectHandler
-#  configuration:
+  configuration:
+    #打印SQL日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 #    #配置返回数据库(column下划线命名&&返回java实体是驼峰命名)，自动匹配无需as（没开启这个，SQL需要写as： select user_id as userId）
 #    map-underscore-to-camel-case: true
 #    cache-enabled: false
