@@ -1,11 +1,13 @@
 package com.dragon.githubspringcloud.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.api.ApiController;
 import com.dragon.githubspringcloud.entity.Staff;
 import com.dragon.githubspringcloud.service.IStaffService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sun.org.apache.xerces.internal.util.EntityResolverWrapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,12 +37,12 @@ public class StaffController extends ApiController {
     }
 
     @ApiOperation("员工查询")
-    @GetMapping("/{staff}/{ssss}")
-    public boolean save(@PathVariable String ssss,@PathVariable String staff) {
+    @GetMapping("/{queryString}")
+    public boolean save(@PathVariable String queryString) {
+        //TODO 学习jackson
         Staff s = new Staff();
         s.setPhoneNum("dasd");
-        logger.info(staff);
-        logger.info(ssss);
+        ObjectMapper objectMapper = new ObjectMapper();
         return false;
     }
 
