@@ -13,6 +13,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -27,16 +28,9 @@ public class StaffController extends ApiController {
     @Autowired
     private IStaffService staffService;
 
-    @ApiOperation("员工列表查询")
-    @GetMapping("/list")
-    public List<Staff> list() {
-        return staffService.list();
-    }
-
-    @ApiOperation("员工分页查询")
+    @ApiOperation("员工列表/分页查询")
     @PostMapping("/page")
     public IPage<Staff> page(@RequestBody RequestEntity<Staff> requestEntity) {
-
         Page<Staff> page = new Page<Staff>();
         QueryWrapper<Staff> queryWrapper = null;
         //判断分页参数是否为空
@@ -48,18 +42,15 @@ public class StaffController extends ApiController {
         if (requestEntity.getParams() != null) {
             queryWrapper = new QueryWrapper<>(requestEntity.getParams());
         }
+        //TODO 问题：传任意JSON查询全部
         return staffService.page(page, queryWrapper);
     }
 
 
-//    @ApiOperation("员工查询")
-//    @GetMapping("/{queryString}")
-//    public boolean save(@PathVariable String queryString) {
-//        //TODO 学习jackson
-//        Staff s = new Staff();
-//        s.setPhoneNum("dasd");
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        return false;
-//    }
+    @ApiOperation("员工新增")
+    @PostMapping("/save")
+    public boolean save(@RequestBody Staff staff) {
+        return staffService.save(staff);
+    }
 
 }
