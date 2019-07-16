@@ -4,11 +4,11 @@ import lombok.Data;
 
 @Data
 public class Staff {
-    private int id;
+    private Integer id;
     private String name;
     private String gender;
     private String phoneNum;
-    private int age;
+    private Integer age;
     private String department;
     private String address;
 }
